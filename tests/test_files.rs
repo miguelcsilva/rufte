@@ -1,7 +1,7 @@
-use std::env;
-use std::fs::{File, create_dir_all, remove_dir_all};
-use std::io::Write;
 use rufte::file::get_files;
+use std::env;
+use std::fs::{create_dir_all, remove_dir_all, File};
+use std::io::Write;
 
 #[test]
 fn test_get_files() {
@@ -16,10 +16,16 @@ fn test_get_files() {
     File::create(&file_1_path).unwrap().write(b"test1").unwrap();
     create_dir_all(&subfolder_path).unwrap();
     File::create(&file_2_path).unwrap().write(b"test2").unwrap();
-    File::create(&file_3_path).unwrap().write(b"ignore_me").unwrap();
+    File::create(&file_3_path)
+        .unwrap()
+        .write(b"ignore_me")
+        .unwrap();
 
     let files = get_files(&tmp_dir);
-    let files_: Vec<String> = files.iter().map(|f| f.to_str().unwrap().to_string()).collect();
+    let files_: Vec<String> = files
+        .iter()
+        .map(|f| f.to_str().unwrap().to_string())
+        .collect();
     let expected_files = vec![file_1_path, file_2_path];
     assert_eq!(files_, expected_files);
 }
