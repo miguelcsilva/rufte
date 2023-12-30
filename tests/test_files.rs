@@ -7,7 +7,7 @@ use std::io::Write;
 fn test_get_files() {
     println!("{}", env!("CARGO_TARGET_TMPDIR"));
     let tmp_dir = String::from(env!("CARGO_TARGET_TMPDIR")) + "/test_get_files";
-    remove_dir_all(&tmp_dir).unwrap();
+    remove_dir_all(&tmp_dir).expect("No directory to remove.");
     let file_1_path = String::from(&tmp_dir) + "/f1.txt";
     let subfolder_path = String::from(&tmp_dir) + "/folder";
     let file_2_path = subfolder_path.to_owned() + "/f2";
