@@ -21,11 +21,10 @@ fn test_get_files() {
         .write(b"ignore_me")
         .unwrap();
 
-    let files = get_files(&tmp_dir);
-    let files_: Vec<String> = files
+    let files: Vec<String> = get_files(&tmp_dir)
         .iter()
         .map(|f| f.to_str().unwrap().to_string())
         .collect();
     let expected_files = vec![file_1_path, file_2_path];
-    assert_eq!(files_, expected_files);
+    assert_eq!(files, expected_files);
 }
