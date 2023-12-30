@@ -5,6 +5,7 @@ use std::io::Write;
 
 #[test]
 fn test_get_files() {
+    println!("{}", env!("CARGO_TARGET_TMPDIR"));
     let tmp_dir = String::from(env!("CARGO_TARGET_TMPDIR")) + "/test_get_files";
     remove_dir_all(&tmp_dir).unwrap();
     let file_1_path = String::from(&tmp_dir) + "/f1.txt";
