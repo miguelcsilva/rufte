@@ -6,7 +6,7 @@ use std::io::Write;
 #[test]
 fn test_get_files() {
     let tmp_dir = String::from(env!("CARGO_TARGET_TMPDIR")) + "/test_get_files";
-    remove_dir_all(&tmp_dir).unwrap();
+    remove_dir_all(&tmp_dir).ok();
     let file_1_path = String::from(&tmp_dir) + "/f1.txt";
     let subfolder_path = String::from(&tmp_dir) + "/folder";
     let file_2_path = subfolder_path.to_owned() + "/f2";
@@ -21,11 +21,10 @@ fn test_get_files() {
         .write(b"ignore_me")
         .unwrap();
 
-    let files = get_files(&tmp_dir);
-    let files_: Vec<String> = files
+    let files: Vec<String> = get_files(&tmp_dir)
         .iter()
         .map(|f| f.to_str().unwrap().to_string())
         .collect();
     let expected_files = vec![file_1_path, file_2_path];
-    assert_eq!(files_, expected_files);
+    assert_eq!(files, expected_files);
 }
