@@ -1,4 +1,4 @@
-use rufte::file::get_files;
+use rufte::path::get_file_paths;
 use std::env;
 use std::fs::{create_dir_all, remove_dir_all, File};
 use std::io::Write;
@@ -21,7 +21,7 @@ fn test_get_files() {
         .write(b"ignore_me")
         .unwrap();
 
-    let files: Vec<String> = get_files(&tmp_dir)
+    let files: Vec<String> = get_file_paths(&tmp_dir)
         .iter()
         .map(|f| f.to_str().unwrap().to_string())
         .collect();
