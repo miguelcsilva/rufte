@@ -2,7 +2,7 @@ extern crate glob;
 use glob::glob;
 use std::path::PathBuf;
 
-pub fn get_file_paths(directory: &str) -> Vec<PathBuf> {
+pub fn file_paths(directory: &str) -> Vec<PathBuf> {
     let search_pattern = directory.to_string() + "/**/[!.]*";
     let paths = glob(&search_pattern).unwrap();
     let file_paths: Vec<PathBuf> = paths
