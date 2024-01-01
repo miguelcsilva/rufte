@@ -10,11 +10,7 @@ const SOURCE_FOLDER: &str = "./src";
 fn main() {
     let paths = file_paths(SOURCE_FOLDER);
     for path in paths {
-        let contents = read_to_string(&path);
-        println!(
-            "{}: {}",
-            &path.display(),
-            number_of_lines(&contents.unwrap())
-        )
+        let contents = read_to_string(&path).unwrap();
+        println!("{}: {}", &path.display(), number_of_lines(&contents))
     }
 }
