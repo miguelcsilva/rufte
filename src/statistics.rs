@@ -7,7 +7,7 @@ mod tests {
     use super::get_number_of_lines;
 
     #[test]
-    fn test_get_number_of_lines(){
+    fn test_get_number_of_lines() {
         assert_eq!(get_number_of_lines(""), 0);
         assert_eq!(get_number_of_lines("a"), 1);
         assert_eq!(get_number_of_lines("a\n"), 1);

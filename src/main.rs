@@ -11,6 +11,10 @@ fn main() {
     let paths = get_file_paths(SOURCE_FOLDER);
     for path in paths {
         let contents = read_to_string(&path);
-        println!("{}: {}", &path.display(), get_number_of_lines(&contents.unwrap()))
+        println!(
+            "{}: {}",
+            &path.display(),
+            get_number_of_lines(&contents.unwrap())
+        )
     }
 }
